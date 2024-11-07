@@ -30,10 +30,10 @@ func TestAnotherHTTPServer(t *testing.T) {
 			}
 
 			resp, err := http.DefaultClient.Do(req)
-			defer resp.Body.Close()
 			if err != nil {
 				t.Fatalf("DefaultClient.Do unexpected error: %s", err.Error())
 			}
+			defer resp.Body.Close()
 
 			if resp.StatusCode != http.StatusOK {
 				t.Errorf("Status code expevted 200, got %s", http.StatusText(resp.StatusCode))

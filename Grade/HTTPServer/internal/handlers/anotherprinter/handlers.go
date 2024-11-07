@@ -1,10 +1,10 @@
 package anotherprinter
 
 import (
-	"crypto/rand"
 	"fmt"
-	"math/big"
 	"net/http"
+	"httpserver/internal/randomprovider"
+
 )
 
 func helloPage(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +20,6 @@ func versionPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func randomNumberPage(w http.ResponseWriter, r *http.Request) {
-	randInt, _ := rand.Int(rand.Reader, big.NewInt(1000))
-	fmt.Fprintf(w, "%s\n", randInt.String())
+	rp := randomprovider.NewRandomNumberProvider()
+	fmt.Fprintf(w, "%d\n", rp.GetRandomInt())
 }

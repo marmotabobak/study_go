@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func TestHTTPServer(t *testing.T) {
+func TestAnotherHTTPServer(t *testing.T) {
 	s := httptest.NewServer(simpleprinter.NewSimplePrinterServeMux())
 	defer s.Close()
 

@@ -1,7 +1,7 @@
 package server_test
 
 import (
-	"httpserver/internal/handlers/anotherprinter"
+	"httpserver/internal/mux"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -18,7 +18,7 @@ const (
 
 func TestSimpleHTTPServer(t *testing.T) {
 	version := "someVersion"
-	s := httptest.NewServer(anotherprinter.NewAnotherPrinterMux(version))
+	s := httptest.NewServer(mux.NewAnotherPrinterMux(version))
 	defer s.Close()
 
 	type reqTable struct {

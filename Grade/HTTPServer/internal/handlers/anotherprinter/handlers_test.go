@@ -11,7 +11,7 @@ func Test_helloPage(t *testing.T) {
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodGet, "/hello", nil)
 
-	helloPage(w, r)
+	HelloPage(w, r)
 
 	res := w.Result()
 	defer res.Body.Close()

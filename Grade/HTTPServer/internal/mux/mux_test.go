@@ -1,4 +1,4 @@
-package anotherprinter
+package mux
 
 import (
 	"net/http"

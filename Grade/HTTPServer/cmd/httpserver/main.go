@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"httpserver/internal/handlers/anotherprinter"
+	"httpserver/internal/mux"
 )
 
 var (
@@ -14,6 +14,6 @@ var (
 func main() {
 	fmt.Printf("Started with version: %s\n\n", Version)
 
-	mux := anotherprinter.NewAnotherPrinterMux(Version)
+	mux := mux.NewAnotherPrinterMux(Version)
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }

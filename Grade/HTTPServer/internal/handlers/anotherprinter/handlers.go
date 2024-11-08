@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"httpserver/internal/randomprovider"
-
 )
 
 func helloPage(w http.ResponseWriter, r *http.Request) {

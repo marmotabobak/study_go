@@ -17,7 +17,8 @@ const (
 )
 
 func TestSimpleHTTPServer(t *testing.T) {
-	s := httptest.NewServer(anotherprinter.NewAnotherPrinterMux())
+	version := "someVersion"
+	s := httptest.NewServer(anotherprinter.NewAnotherPrinterMux(version))
 	defer s.Close()
 
 	type reqTable struct {
@@ -29,7 +30,7 @@ func TestSimpleHTTPServer(t *testing.T) {
 	table := []reqTable{
 		{path: "/hello", result: "Hello!\n", testComparisonType: TestComparisonEqual},
 		{path: "/api", result: "This is \"/api\" page.\n", testComparisonType: TestComparisonEqual},
-		{path: "/version", result: "vX.X.X_YYYYMMDDhhmmss\n", testComparisonType: TestComparisonEqual},
+		{path: "/version", result: "someVersion\n", testComparisonType: TestComparisonEqual},
 		{path: "/randomnumber", result: "", testComparisonType: TestComparisonIntType},
 	}
 

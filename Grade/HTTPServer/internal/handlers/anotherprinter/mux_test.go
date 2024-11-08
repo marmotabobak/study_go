@@ -7,7 +7,8 @@ import (
 )
 
 func Test_NewSimplePrinterServeMux(t *testing.T) {
-	mux := NewAnotherPrinterMux()
+	version := "someVersion"
+	mux := NewAnotherPrinterMux(version)
 
 	t.Run("/hello", func(t *testing.T) {
 		w := httptest.NewRecorder()

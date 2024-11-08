@@ -1,12 +1,19 @@
 package main
 
 import (
-	"httpserver/internal/handlers/anotherprinter"
+	"fmt"
 	"log"
 	"net/http"
+	"httpserver/internal/handlers/anotherprinter"
+)
+
+var (
+	Version = "v0.0.0_YYYYMMDDhhmmss"
 )
 
 func main() {
-	mux := anotherprinter.NewAnotherPrinterMux()
+	fmt.Printf("Started with version: %s\n\n", Version)
+
+	mux := anotherprinter.NewAnotherPrinterMux(Version)
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }

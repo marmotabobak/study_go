@@ -14,8 +14,10 @@ func apiPage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "This is \"/api\" page.\n")
 }
 
-func versionPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "vX.X.X_YYYYMMDDhhmmss\n")
+func NewVersionPage(version string) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "%s\n", version)
+	}
 }
 
 func randomNumberPage(w http.ResponseWriter, r *http.Request) {

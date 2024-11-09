@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	"REST/internal/mux"
+	"REST/internal/app/mux"	
 )
 
 func main() {

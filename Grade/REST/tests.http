@@ -1,0 +1,4 @@
+curl -X GET http://localhost:8080/tasks
+curl -X POST http://localhost:8080/tasks -H "Content-Type: application/json" -d '{"text": "custom text", "status": "completed"}'
+curl -X PUT http://localhost:8080/tasks/1 -H "Content-Type: application/json" -d '{"id": 1, "text": "custom text", "status": "completed"}'
+curl -X DELETE http://localhost:8080/tasks/2

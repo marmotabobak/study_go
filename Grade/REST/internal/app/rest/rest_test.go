@@ -1,44 +1,43 @@
 package rest
 
-// import (
-// 	"bytes"
-// 	"encoding/json"
-// 	"io"
-// 	"net/http"
-// 	"net/http/httptest"
-// 	"testing"
-// 	"REST/internal/app/tasks"
-// )
+import (
+	// "bytes"
+	"encoding/json"
+	"io"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+)
 
-// func TestGetTask(t *testing.T) {
+func TestGetTask(t *testing.T) {
 
-// 	w := httptest.NewRecorder()
+	w := httptest.NewRecorder()
 
-// 	GetTasks(w)
+	GetTasks(w)
 
-// 	res := w.Result()
+	res := w.Result()
 
-// 	if res.StatusCode != http.StatusOK {
-// 		t.Errorf("200 expected got: %d", res.StatusCode)
-// 	}
+	if res.StatusCode != http.StatusOK {
+		t.Errorf("200 expected got: %d", res.StatusCode)
+	}
 
-// 	tasksJSON, _ := json.Marshal(tasks)
-// 	buf, err := io.ReadAll(res.Body)
-// 	if err != nil {
-// 		t.Error(err.Error())
-// 	}
-// 	defer res.Body.Close()	
+	tasksJSON, _ := json.Marshal(tasks)
+	buf, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Error(err.Error())
+	}
+	defer res.Body.Close()	
 
-// 	if string(tasksJSON) + "\n" != string(buf) {
-// 		t.Errorf("Expected: %s, got: %s", tasksJSON, buf)
-// 	}
-// }
+	if string(tasksJSON) + "\n" != string(buf) {
+		t.Errorf("Expected: %s, got: %s", tasksJSON, buf)
+	}
+}
 
 // func TestAddTask(t *testing.T) {
 
-// 	task := Task{
+// 	task := tasks.Task{
 // 		Text: "foo",
-// 		Status: StatusUnknown,
+// 		Status: tasks.StatusUnknown,
 // 	}
 // 	taskJSON, _ := json.Marshal(task)
 
@@ -61,7 +60,7 @@ package rest
 // 		t.Errorf("200 expected got: %d", res.StatusCode)
 // 	}
 
-// 	tasksJSON, _ := json.Marshal(tasks)
+// 	tasksJSON, _ := json.Marshal(tasks.Tasks)
 // 	buf, err := io.ReadAll(res.Body)
 // 	if err != nil {
 // 		t.Error(err.Error())

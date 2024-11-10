@@ -12,8 +12,7 @@ import (
 	"testing"
 )
 
-
-func TestCalculateHandler(t *testing.T) {
+func TestCalculateHandlerErrors(t *testing.T) {
 	errorTestCases := map[string]string{
 		"": "numbers absent",
 		"number1=1": "numbers absent",
@@ -31,7 +30,6 @@ func TestCalculateHandler(t *testing.T) {
 		
 		CalculateHandler(w, r)
 	
-		// numbers absent
 		resp := w.Result()
 		defer resp.Body.Close()
 	
@@ -52,5 +50,29 @@ func TestCalculateHandler(t *testing.T) {
 		if bufJSON.Error != expectedResult {
 			t.Errorf("Test case: %s, got: %s", testCase, bufJSON.Error)
 		}
+	}
+}
+
+func TestCalculateHandlerSuccess(t *testing.T) {
+	w := httptest.NewRecorder()
+	r := httptest.NewRequest(http.MethodGet, "/calculate?number1=10&number2=15", nil)
+	
+	CalculateHandler(w, r)
+
+	resp := w.Result()
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("Status code expected 200, got %s", http.StatusText(resp.StatusCode))
+	}
+
+	buf, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Errorf("io.ReadAll error: %s", err.Error())
+	}
+
+	expected := `{"result":25,"error":"","parameters":{"number1":10,"number2":15}}` + "\n"
+	if string(buf) != expected {
+		t.Errorf("Test case: %s, got: %s", expected, string(buf))
 	}
 }

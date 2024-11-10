@@ -6,8 +6,8 @@ import (
 	"pagination/internal/repository/books"
 )
 
-func VewBooks(w http.ResponseWriter, r *http.Request, page int, limit int, books []books.Book) {
-	startIndex := (page-1) * limit
+func ViewBooks(w http.ResponseWriter, r *http.Request, page int, limit int, books []books.Book) {
+	startIndex := (page - 1) * limit
 	endIndex := startIndex + limit
 
 	if startIndex > len(books) {

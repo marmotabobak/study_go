@@ -58,4 +58,6 @@ var Books = []Book{
 	{48, "Book 48", "Author 3", 28.99},
 	{49, "Book 49", "Author 1", 27.99},
 	{50, "Book 50", "Author 2", 19.99},
+	{51, "Book 51", "AuthorTest", 1.23},
+	{52, "Book 52", "AuthorTest", 4.56},
 }
